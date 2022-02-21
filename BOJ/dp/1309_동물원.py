@@ -5,6 +5,9 @@ mod = 9901
 D[1] = [1, 1, 1] # OX, XO, XX를 기준으로 구분.
 for i in range(2, n+1):
     OX, XO, XX = D[i-1]
+    # OX로 끝나는 경우엔 그 이전에 XO, XX로 끝나는 경우가 들어올 수 있음.
+    # XO로 끝나는 경우엔 그 이전에 OX, XX로 끝나는 경우가 들어올 수 있음.
+    # XX로 끝나는 경우엔 그 이전에 모든 경우가 들어올 수 있음.
     D[i] = [(XO + XX)%mod, (OX + XX)%mod, (OX + XO + XX)%mod]
 print(sum(D[n])%mod)
 
